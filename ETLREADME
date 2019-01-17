@@ -1,0 +1,18 @@
+README for ETL Project- Marcus, Nada, Abtin
+
+Extract:
+
+We extracted the data from .csv files downloaded from kaggle.com, called "cryptocurrencypricehistory" and "stock-data-dow-jones" respectively. To do this we used the read_csv feature from Pandas to make DataFrames for Bitcoin and IBM, the stocks we chose for analysis. Before the transformation phase, we also loaded this data into SQL to serve the purpose of the project, since in real world circumstances we might originally be retrieving it from a database for the extraction. We retrieved it from the database and put it back into DataFrames using Pandas.
+
+Transform:
+
+There was no functional need to transform the data at the level of file type, since it was already in .csv format, which can be readily manipulated in Python. We also chose to use the time interval by which the data was originally presented (daily), so we didn't need to filter for particular dates. We cleaned the data, removing the parts we were not going to use for analysis (everything except price and volume) or as the index (date). We then used Pandas to merge (on date) the two cleaned DataFrames, ibm_df and bitcoin_df, into comparison_df.
+
+Load:
+
+For the final step in the ETL process, we loaded comparison_df into SQL using pd.to_sql().
+
+
+Visualizations:
+
+We plotted Bitcoin Price by Date and IBM Price by Date separately. The graphs showed that while Bitcoin and IBM (perhaps cryptocurrencies and tech stocks in general, if we had had more time to analyze them) both experienced sharp increases over short periods of time. Bitcoin has fluctuated much more in general and still experiences price swings that IBM no longer seems to experience so drastically.
